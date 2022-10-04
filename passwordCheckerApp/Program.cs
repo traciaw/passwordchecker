@@ -5,7 +5,7 @@ class MainClass
     public static void Main(string[] args)
     {
         //password requirements
-        int minLength = 8;
+        int minLength = 9;
         string uppercase = "ABCDEFGHIKLMNOPQRSTVXYZ";
         string lowercase = "abcdefghiklmnopqrstvxyz";
         string digits = "0123456789";
@@ -30,11 +30,6 @@ class MainClass
             score = score + 1;
             //Console.WriteLine($"Score: {score}");
         }
-        if (Contains(userInput, lowercase))
-        {
-            score = score + 1;
-            //Console.WriteLine($"Score: {score}");
-        }
         if (Contains(userInput, digits))
         {
             score = score + 1;
@@ -45,7 +40,18 @@ class MainClass
             score = score + 1;
             //Console.WriteLine($"Score: {score}");
         }
-        score = score + score;
+        if (userInput == "password")
+        {
+            score = 0;
+            Console.WriteLine("This password is too easy to crack!");
+            //Console.WriteLine($"Score: {score}");
+        }
+        if (userInput == "1234")
+        {
+            score = 0;
+            Console.WriteLine("This password is too easy to crack!");
+            //Console.WriteLine($"Score: {score}");
+        }
         Console.WriteLine($"Score: {score}");
 
         //CHANGE TO ACCEPT >4
@@ -69,6 +75,13 @@ class MainClass
                 break;
         }
         Console.ReadLine();
+
+        if (score < 3)
+        {
+            Console.WriteLine("Try Again");
+            Console.Write("Enter a password: ");
+
+        }
     }
     
 
